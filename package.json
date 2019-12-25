@@ -1,0 +1,24 @@
+{
+  "name": "twitter-spreadsheet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xandjiji/twitter-spreadsheet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xandjiji/twitter-spreadsheet/issues"
+  },
+  "homepage": "https://github.com/xandjiji/twitter-spreadsheet#readme",
+  "dependencies": {
+    "google-spreadsheet": "^2.0.8",
+    "nodemailer": "^6.4.2",
+    "twit": "^2.2.11"
+  }
+}

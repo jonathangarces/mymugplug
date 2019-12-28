@@ -14,7 +14,7 @@ const spreadsheetID = '1yDaTcGnOUEd_EJNlpPdmYWkUPLZFYJZ6aRgDeL5mapI';
 
 main();
 
-/* setInterval(getReadyDesigns, 30000); */
+setInterval(getReadyDesigns, 60000);
 
 function main() {
 

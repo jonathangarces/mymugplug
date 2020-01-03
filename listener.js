@@ -28,8 +28,7 @@ const WooCommerce = new WooCommerceRestApi({
 main();
 
 function main() {
-
-    
+    // begin
     console.log(`${timestamp()} The bot is now listening to mentions ${twitterHandle}`);
     var stream = robot.stream('statuses/filter', { track: twitterHandle });
     stream.on('tweet', addData);

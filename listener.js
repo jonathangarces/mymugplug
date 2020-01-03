@@ -25,7 +25,6 @@ const WooCommerce = new WooCommerceRestApi({
     version: "wc/v3"
 });
 
-
 main();
 
 function main() {

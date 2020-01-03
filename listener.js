@@ -36,8 +36,7 @@ function main() {
 }
 
 async function addData(tweet) {
-   // console.log("tweet", tweet)
-
+    
     const data = {
         name: "Mug for " + tweet.user.screen_name,
         type: "simple",

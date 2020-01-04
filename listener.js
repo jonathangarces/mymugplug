@@ -28,7 +28,7 @@ const WooCommerce = new WooCommerceRestApi({
 main();
 
 function main() {
-    // begin
+
     console.log(`${timestamp()} The bot is now listening to mentions ${twitterHandle}`);
     var stream = robot.stream('statuses/filter', { track: twitterHandle });
     stream.on('tweet', addData);
@@ -36,13 +36,14 @@ function main() {
 }
 
 async function addData(tweet) {
+    console.log("tweet", tweet)
 
     const data = {
-        name: "Custom Mug Design For " + tweet.user.screen_name,
+        name: "Mug for " + tweet.user.screen_name,
         type: "simple",
         regular_price: "15.99",
         description: tweet.text,
-        short_description: 'this' ,
+        short_description: "",
         categories: [
             {
                 id: 21
@@ -62,7 +63,7 @@ async function addData(tweet) {
     var permalink;
     await WooCommerce.post("products", data)
         .then((response) => {
-            //console.log("Response Data:", response.data);
+            console.log("Response Data:", response.data);
             permalink = response.data.permalink
 
         })
@@ -201,3 +202,4 @@ function timestamp() {
     time = `[${time}]`;
     return time;
 }
+

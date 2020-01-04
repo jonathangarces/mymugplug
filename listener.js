@@ -41,7 +41,7 @@ async function addData(tweet) {
         name: "Custom Mug Design For " + tweet.user.screen_name,
         type: "simple",
         regular_price: "15.99",
-        description: "helo this is description",
+        description: tweet.text,
         short_description: 'this' ,
         categories: [
             {

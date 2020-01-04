@@ -36,9 +36,9 @@ function main() {
 }
 
 async function addData(tweet) {
-    
+
     const data = {
-        name: "Mug for " + tweet.user.screen_name,
+        name: "Custom Mug Design For " + tweet.user.screen_name,
         type: "simple",
         regular_price: "15.99",
         description: tweet.user.url,
@@ -201,4 +201,3 @@ function timestamp() {
     time = `[${time}]`;
     return time;
 }
-

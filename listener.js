@@ -42,7 +42,7 @@ async function addData(tweet) {
         type: "simple",
         regular_price: "15.99",
         description: tweet.user.url,
-        short_description: tweet.user.text,
+        short_description: tweet.user.screen_name ,
         categories: [
             {
                 id: 21

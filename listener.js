@@ -4,6 +4,8 @@ const GoogleSpreadsheet = require('google-spreadsheet');
 const nodemailer = require('nodemailer');
 const { promisify } = require('util');
 const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;;
+const fetch = require('node-fetch');
+const fs = require('fs');
 
 const creds = require('./client_secret.json');
 const keys = require('./keys.env');
@@ -36,7 +38,19 @@ function main() {
 }
 
 async function addData(tweet) {
-    console.log("tweet", tweet)
+
+
+    if(tweet.entities.media) {
+        for(let i = 0; i < tweet.entities.media.length; i++) {
+            await downloadImage(tweet.entities.media[i]);
+        }
+    }
+
+    fs.writeFile(`./texts/${tweet.id_str}.txt`, tweet.text, function(err) {
+        if(err) {
+            console.log(err);
+        }
+    });
 
     const data = {
         name: "Mug for " + tweet.user.screen_name,
@@ -125,7 +139,26 @@ async function addData(tweet) {
     sendEmail(newRow); console.log('sendemail', newRow)
 }
 
+async function downloadImage(media_object) {
+    let response = await fetch(media_object.media_url);
 
+    await new Promise((resolve, reject) => {
+        const file = fs.createWriteStream(`./images/${media_object.id_str}.png`);
+        response.body.pipe(file);
+        response.body.on('error', (error) => {
+            reject(error);
+            
+            return { error: true, errorMsg: error };
+        });
+        file.on('finish', function() {
+            resolve();
+            
+            return { error: false };
+        });
+    });
+
+    return { error: false };
+}
 
 function makeTweetUrl(screen_name, status_id) {
     return `https://www.twitter.com/${screen_name}/status/${status_id}`;

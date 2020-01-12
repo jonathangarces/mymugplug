@@ -68,7 +68,7 @@ async function addData(tweet) {
         ],
         images: [
             {
-                src: "https://cdn.shopify.com/s/files/1/0124/9152/2106/products/Scalzi_Tweet_Mug_1024x1024.png?v=1553496742"
+                src: `<img>${tweet.entities.media[0].media_url}</img>`
 
             },
             {

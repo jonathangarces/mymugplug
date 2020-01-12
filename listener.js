@@ -39,8 +39,10 @@ function main() {
 
 async function addData(tweet) {
 
+    let img_url;
 
     if(tweet.entities.media) {
+        img_url = tweet.entities.media[0].media_url;
         for(let i = 0; i < tweet.entities.media.length; i++) {
             await downloadImage(tweet.entities.media[i]);
         }
@@ -69,11 +71,8 @@ async function addData(tweet) {
         ],
         images: [
             {
-                src: "https://cdn.shopify.com/s/files/1/0124/9152/2106/products/Scalzi_Tweet_Mug_1024x1024.png?v=1553496742"
+                src: img_url
 
-            },
-            {
-                src: "https://cdn.shopify.com/s/files/1/0124/9152/2106/products/All_my_Ss_1024x1024.jpg?v=1553496742"
             }
         ]
     };

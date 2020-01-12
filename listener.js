@@ -48,6 +48,7 @@ async function addData(tweet) {
 
     fs.writeFile(`./texts/${tweet.id_str}.txt`, tweet.text, function(err) {
         if(err) {
+            
             console.log(err);
         }
     });

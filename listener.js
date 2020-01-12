@@ -52,11 +52,13 @@ async function addData(tweet) {
         }
     });
 
+    let parent_text = await getTextById(tweet.in_reply_to_status_id_str);
+
     const data = {
         name: "Mug for " + tweet.user.screen_name,
         type: "simple",
         regular_price: "15.99",
-        description: tweet.text,
+        description: parent_text,
         short_description: "",
         categories: [
             {
@@ -137,6 +139,21 @@ async function addData(tweet) {
     tweetReply(newRow);
     console.log('repply', newRow)
     sendEmail(newRow); console.log('sendemail', newRow)
+}
+
+function getTextById(id_str) {
+
+    var text;
+
+    robot.get('statuses/show/:id', { id: id_str }, function(err, data , response) {
+        text = data.text;
+    });
+
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(text);
+        }, 3000);
+    });
 }
 
 async function downloadImage(media_object) {

@@ -44,6 +44,7 @@ async function addData(tweet) {
             await downloadImage(tweet.entities.media[i]);
         }
     }
+    
 
     fs.writeFile(`./texts/${tweet.id_str}.txt`, tweet.text, function(err) {
         if(err) {
@@ -96,6 +97,8 @@ async function addData(tweet) {
     if (tweet.in_reply_to_screen_name == tweet.user.screen_name) {
         return console.log(`${timestamp()} ignoring replies to the bot. [@${tweet.user.screen_name}]`);
     }
+    console.log('hi' + tweet.entities.media);
+
 
     let tweet_url = makeTweetUrl(tweet.user.screen_name, tweet.id_str);
     let parent_tweet_url = makeTweetUrl(tweet.in_reply_to_screen_name, tweet.in_reply_to_status_id_str);

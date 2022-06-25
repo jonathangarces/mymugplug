@@ -19,7 +19,7 @@
   "dependencies": {
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
     "google-spreadsheet": "^2.0.8",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "nodemailer": "^6.4.2",
     "nodemon": "^2.0.2",
     "twit": "^2.2.11"
